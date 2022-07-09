@@ -23,6 +23,8 @@ module.exports = {
         'custom-warm-dark': '#ae2012',
         'custom-warm-extraDark': '#9b2226',
         'custom-background': '#18191A',
+        'custom-purple-primary': '#BB86FC',
+        'custom-purple-secondary': '#3700b3',
         'custom-card': '#242526',
         'custom-hover': '#3A3B3C',
         'custom-text-primary': '#E4E6EB',
