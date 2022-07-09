@@ -1,3 +1,4 @@
+// library
 import React from 'react';
 import {
   BrowserRouter,
@@ -6,18 +7,25 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+// components
 import Layout from '../components/Layout'
+
+// pages
 import Home from './home';
-// import MyBooks from './mybooks';
-// import Favorites from './favorites';
+import Read from './read';
+import Create from './create';
+
+
+
 const Webpages = () => {
     return(
         <BrowserRouter>
             <Layout>
                 <Routes>
                     <Route exact path="/" element= {<Home />} />
-                    {/* <Route path = "/mybooks" component = {MyBooks} /> */}
-                    {/* <Route path = "/favorites" component = {Favorites} /> */}
+                    <Route exact path="/create" element= {<Create />} />
+                    <Route exact path="/read" element= {<Read />} />
                 </Routes>
             </Layout>
         </BrowserRouter>
