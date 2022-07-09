@@ -19,20 +19,32 @@ resource = boto3.resource(
 )
 
 # get reference to Users table
-userTable = resource.Table('Users')
+ingredientTable = resource.Table('Ingredients')
 
 # CREATE
-def createUser(email, password, name):
-    user = {'email': email, 'password': password, 'name': name}
-    res = userTable.put_item(Item=user)
+def createIngredient(name, category):
+    ingredient = {'name': name, 'category': category}
+    res = ingredientTable.put_item(Item=ingredient)
     return res
 
 # READ
-def readUser(email):
-    key = {'email': email}
-    columns = ['email', 'password', 'name']
-    res = userTable.get_item(Key=key, AttributesToGet=columns)
-    return res
+def getAllIngredients():
+    res = ingredientTable.scan()
+    data = res['Items']
+
+    # dynamoDB limits results to 1MB, so paginate through results in loop
+    while 'LastEvaluatedKey' in res:
+        res = ingredientTable.scan(ExclusiveStartKey=res['LastEvaluatedKey'])
+        data.extend(res['Items'])
+    
+    return data
+
+
+# def readUser(email):
+#     key = {'email': email}
+#     columns = ['email', 'password', 'name']
+#     res = userTable.get_item(Key=key, AttributesToGet=columns)
+#     return res
 
 # UPDATE
 # TODO
