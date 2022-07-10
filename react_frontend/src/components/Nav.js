@@ -10,7 +10,8 @@ const Nav = () => {
     const navLinks = [
         {route: '/', name: 'Home', id: 1},
         {route: '/create', name: 'Create', id: 2},
-        {route: '/read', name: 'Read', id: 3},
+        {route: '/meals', name: 'Meals', id: 3},
+        {route: '/ingredients', name: 'Ingredients', id: 4},
     ]
   return (
     <div className="bg-custom-card mb-5 p-2 flex flex-row items-center">
