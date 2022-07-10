@@ -27,6 +27,22 @@ def createIngredient(name, category):
     res = ingredientTable.put_item(Item=ingredient)
     return res
 
+def mannyCreateIngredient(name, category, mfr, type, unit, price, kcal):
+    ingredient = {
+        'name': name,
+        'category': category,
+        'mfr': mfr,
+        'type': type,
+        'unit': unit,
+        'price': price,
+        'kcal': kcal
+        }
+    res = ingredientTable.put_item(Item=ingredient)
+    return res
+
+def mannyDeleteIngredient(name):
+    ingredientTable.delete_item(Key={'name': name})
+
 # READ
 def getAllIngredients():
     res = ingredientTable.scan()
