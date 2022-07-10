@@ -2,7 +2,9 @@ import React from 'react'
 
 const Meals = () => {
   return (
-    <div>meals</div>
+    <div className='text-custom-text-primary'>
+      meals placeholder
+    </div>
   )
 }
 
