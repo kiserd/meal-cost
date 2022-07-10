@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import IngredientCard from '../components/IngredientCard';
 
 
-const Home = () => {
+const Ingredients = () => {
 
     const [ingredients, setIngredients] = useState([])
 
@@ -39,4 +39,4 @@ const Home = () => {
         </div>
     );
 };
-export default Home;
+export default Ingredients;
