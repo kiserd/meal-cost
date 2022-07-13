@@ -1,14 +1,13 @@
 from flask import Blueprint, render_template, redirect, flash, url_for, make_response, request
 from . import dynamodb_handler as ddb
+from . import bpt_api
 
-main = Blueprint('main', __name__)
-
-@main.route("/")
-@main.route("/home")
+@bpt_api.route("/")
+@bpt_api.route("/home")
 def home():
     return render_template('index.html')
 
-@main.route("/api/ingredients", methods=['GET', 'POST'])
+@bpt_api.route("/ingredients", methods=['GET', 'POST'])
 def ingredients():
     # handle POST requests **CREATE**
     # should create new ingredient
