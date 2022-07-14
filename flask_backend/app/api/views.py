@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, flash, url_for, make_response, request
+from flask import Blueprint, render_template, redirect, flash, url_for, make_response, request, current_app
 from . import dynamodb_handler as ddb
 from . import bpt_api
 
@@ -18,6 +18,8 @@ def ingredients():
         return make_response('not sure what to send you yet...')
     # handle GET requests **READ**
     else:
+        # log get event
+        current_app.logger.info("get all ingredients endpoint hit")
         res = ddb.getAllIngredients()
         print('res: ', res)
         return make_response({'ingredients': res})

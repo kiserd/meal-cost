@@ -10,9 +10,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     """
-    Base configuration class. Contains default configuration settings + configuration settings applicable to all environments.
+    Base configuration class. Contains default configuration
+    settings + configuration settings applicable to all environments.
     """
     # Default settings
+    FLASK_APP = 'app'
     FLASK_ENV = 'development'
     DEBUG = False
     TESTING = False
