@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   frontend:
     container_name: react_frontend
@@ -9,23 +9,24 @@ services:
       - 3000
     ports:
       - 3000:80
-    volumes:
-      - ./react_frontend/src:/usr/src/app/src
-      - ./react_frontend/public:/usr/src/app/public
+    # volumes:
+    #   - ./react_frontend/src:/usr/src/app/src
+    #   - ./react_frontend/public:/usr/src/app/public
     # links:
       # - "flask_backend:flask_backend"
 
   backend:
     restart: always
     container_name: flask_backend
-    build: ./flask_backend
+    build: 
+      context: ./flask_backend
+      dockerfile: Dockerfile
     expose:
       - 5000
     ports:
       - 5000:5000
-    volumes:
-      - ./backend:/usr/src/app
-    environment:
-      - FLASK_ENV=development
-      - FLASK_APP=app.py
-      - FLASK_DEBUG=1
+    # volumes:
+      # - ./backend:/usr/src/app
+    # environment:
+    #   - FLASK_ENV=development
+    #   - FLASK_DEBUG=1

@@ -22,22 +22,12 @@ resource = boto3.resource(
 ingredientTable = resource.Table('Ingredients')
 
 # CREATE
-def createIngredient(name, category):
-    ingredient = {'name': name, 'category': category}
-    res = ingredientTable.put_item(Item=ingredient)
+def createIngredient(item):
+    res = ingredientTable.put_item(Item=item)
     return res
 
-def mannyCreateIngredient(name, category, mfr, type, unit, price, kcal):
-    ingredient = {
-        'name': name,
-        'category': category,
-        'mfr': mfr,
-        'type': type,
-        'unit': unit,
-        'price': price,
-        'kcal': kcal
-        }
-    res = ingredientTable.put_item(Item=ingredient)
+def mannyCreateIngredient(item):
+    res = ingredientTable.put_item(Item=item)
     return res
 
 def mannyDeleteIngredient(name):

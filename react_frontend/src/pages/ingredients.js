@@ -3,18 +3,17 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 // component
 import IngredientCard from '../components/IngredientCard';
+import Button from '../components/Button'
 
 
 const Ingredients = () => {
 
-    const [ingredients, setIngredients] = useState([])
+    const [ingredients, setIngredients] = useState([]);
+    const [formOpen, setFormOpen] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/ingredients').then((res) => {
-            console.log('res: ', res)
-            console.log('res.data: ', res.data.ingredients)
             setIngredients(res.data.ingredients)
-            console.log('ingredients: ', ingredients)
         })
 
     }, [])
@@ -22,10 +21,11 @@ const Ingredients = () => {
 
     return (
         <div className='flex flex-row'>
-            <div className='basis-2/3 flex flex-col'>
+            <div className='basis-2/3 flex flex-col justify-items-center'>
+                <Button text='New' />
                 {ingredients ? ingredients.map((ingredient) => {
                     return (
-                        <div className='m-2'>
+                        <div key={ingredient.name} className='m-2'>
                             <IngredientCard ingredient={ingredient} />
                         </div>
                     )
@@ -39,4 +39,6 @@ const Ingredients = () => {
         </div>
     );
 };
+
+
 export default Ingredients;

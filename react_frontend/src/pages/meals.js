@@ -3,7 +3,7 @@ import React from 'react'
 const Meals = () => {
   return (
     <div className='text-custom-text-primary'>
-      meals placeholder
+      meals placeholder - updated to see if docker updates
     </div>
   )
 }
